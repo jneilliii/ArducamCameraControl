@@ -32,10 +32,10 @@ class ArducamcameracontrolPlugin(octoprint.plugin.SettingsPlugin,
         else:
             ID = '1'
         self.bus = smbus.SMBus(int(ID))
-        time.sleep(1)
         self.time = time.time()
         focus_level = self._settings.get(["focus_level"])
-        self._logger.info("Initializing focus level on SMBus #{ID} to {focus_level}".format(**locals()))
+        self._logger.info(ID)
+        self._logger.info("Initializing focus level to {focus_level}".format(**locals()))
         self.ptz_focus(focus_level) # Recall focus level since some cameras reset focus after restart
 
     def get_template_configs(self):
